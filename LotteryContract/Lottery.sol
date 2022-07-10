@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0
-
 pragma solidity >=0.7.0 <0.9.0;
 contract Lottery{
     address public manager ;
@@ -25,11 +24,24 @@ contract Lottery{
         return  uint(keccak256(abi.encodePacked(block.difficulty,block.timestamp,players)));
     }
 
+<<<<<<< HEAD
     function pickWinner() public{
         require(msg.sender == manager,"Only manager pick winner");
+=======
+    function pickWinner() public onlyManagerChange{
+>>>>>>> phudev
         uint index = random() % players.length;
         address contractAddress = address(this);
         players[index].transfer(contractAddress.balance);
         players = new address payable[](0);
+    }
+
+    function getPlayers() public view returns (address payable[] memory) {
+        return players;
+    } 
+    // modifie
+    modifier onlyManagerChange(){
+        require(msg.sender == manager,"Only manager pick winner");
+        _;
     }
 }
