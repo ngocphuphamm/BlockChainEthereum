@@ -1,0 +1,10 @@
+nameContract.address
+=========================
+nameContract.taskCount()
+taskCount = await todoList.taskCount()
+taskCount.toNumber()
+========================
+truffle compile (contract)
+truffle migrate (migration)
+truffle migrate --reset 
+truffle deploy 
