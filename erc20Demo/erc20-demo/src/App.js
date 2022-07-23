@@ -1,4 +1,6 @@
 import {useState , useEffect} from "react";
+import AppAuthenticated from "./components/AppAuthenticated";
+import ERC20App from "./components/ERC20/ERC20App";
 const Web3 = require("web3");
 
 
@@ -34,6 +36,8 @@ function App() {
           : instruction
         ) : "Metamask or orther EIP-1102 / EIP-1193 compilant wallet not found "
       }
+      <AppAuthenticated></AppAuthenticated>
+      <ERC20App></ERC20App>
     </div>
   );
 }
