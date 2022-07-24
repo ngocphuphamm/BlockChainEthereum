@@ -1,6 +1,6 @@
 npx hardhat 
 npx hardhat compile 
-npm i --save --save-exact react-scripts@4.0.3
+npm i --save --save-exact react-scripts@4.0.2
     npm i @emotion/react &&
     npm i @emotion/styled &&
     npm i @material-ui/core &&

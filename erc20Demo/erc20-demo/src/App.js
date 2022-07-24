@@ -37,7 +37,6 @@ function App() {
         ) : "Metamask or orther EIP-1102 / EIP-1193 compilant wallet not found "
       }
       <AppAuthenticated></AppAuthenticated>
-      <ERC20App></ERC20App>
     </div>
   );
 }

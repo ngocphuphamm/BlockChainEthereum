@@ -32,7 +32,7 @@ const AppAuthenticated = () =>{
             <Divider />
             <List>
                 <ListItemButton>
-                        <ListItemText primary="ERC-20"></ListItemText>
+                    <ListItemText primary="ERC-20"  ></ListItemText>
                 </ListItemButton>
             </List>
         </Drawer>
@@ -40,7 +40,7 @@ const AppAuthenticated = () =>{
             component="main"
             sx={{ flexGrow: 1, bgcolor: 'background.default', p:3 }}>
                 <Toolbar />
-                <ERC20App />
+                <ERC20App></ERC20App>
         </Box>
     </Box>
     )

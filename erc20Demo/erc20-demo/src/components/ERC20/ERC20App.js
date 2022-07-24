@@ -2,6 +2,7 @@ import {useState} from "react";
 import { Link, Box } from '@mui/material'
 import ERC20Create from './ERC20Create'
 import  ERC20MainMenu  from "./ERC20MainMenu";
+import ERC20Import from "./ERC20Import";
 const Menu = {
     Main : 0, 
     Create  : 1,
@@ -13,18 +14,24 @@ const ERC20App = ()=>{
     const [tokenAddress , setTokenAddress] = useState("");
     
     const onClickCreate = ()=> setMenu(Menu.Create);
+    const importToken = (address)=>{
+        setTokenAddress(address);
+        setMenu(Menu.Import);
+    }
     return(
         <div>
             {
                 menu !== Menu.Main && 
                     <Box sx={{height : "5ch"}}
                      >
-                        <Link href="#" onClick={()=>setMenu(Menu.main)} sx={{m : 1}} >Back</Link> 
+                        <Link href="#" onClick={()=>setMenu(Menu.Main)} sx={{m : 1}} >Back</Link> 
                      </Box>
 
             }
-            {menu === Menu.Main && <ERC20MainMenu onClickCreate={onClickCreate} ></ERC20MainMenu>}
-            {menu === Menu.Create && <ERC20Create></ERC20Create>}
+            {menu === Menu.Main && <ERC20MainMenu onClickCreate={onClickCreate} importToken={importToken}></ERC20MainMenu>}
+            {menu === Menu.Create && <ERC20Create importToken={importToken}></ERC20Create>}
+            {menu === Menu.Import && <ERC20Import tokenAddress={tokenAddress} />}
+
         </div>
     )
 }
