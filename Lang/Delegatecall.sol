@@ -3,8 +3,8 @@ pragma solidity ^0.5.13;
 delegatecall 
 khi dung de goi se thay doi gia tri  tai contract goi 
 contract bi goi khong bi anh huong 
-
 */
+
 contract B{
     uint public num;
     address public sender;
