@@ -8,3 +8,7 @@ truffle compile (contract)
 truffle migrate (migration)
 truffle migrate --reset 
 truffle deploy 
+
+=======
+truffle develop 
+migrate
