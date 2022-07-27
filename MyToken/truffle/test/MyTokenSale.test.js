@@ -11,6 +11,30 @@ contract("MyTokenSale Test",async (accounts)=>{
     it("All tokens should be EMPTY token in first commit",async () =>{
         let instance = await MyToken.deployed() ;
 
-        expect(await instance.balanceOf(deployerAccount)).to.be.a.bignumber.equal(new BN(0));
+        expect(await instance.balanceOf(deployerAccount)).to.be.a.bignumber.equal(await new BN(0));
+    })
+
+    it("All tokens should be in the TokenSale smart contract by default",async ()=>{
+        let instance = await MyToken.deployed() ;
+        let totalSupply = await instance.totalSupply();
+
+        let balanceTokenSaleSC = await instance.balanceOf(MyTokenSale.address);
+
+        await expect(balanceTokenSaleSC).to.be.a.bignumber.equal(totalSupply);
+        
+    })
+
+    it('should be possible to buy one token by simply sending ether to the smart contract',async ()=>{
+        let instance = await MyToken.deployed() ;
+        let tokenSaleInstance = await MyTokenSale.deployed();
+
+        let balanceBefore = await instance.balanceOf.call(anotherAccount);
+        
+        await expect(tokenSaleInstance.sendTransaction({
+            from : anotherAccount,
+            value : web3.utils.toWei("1","wei")
+        })).to.be.fulfilled;
+
+        await expect(balanceBefore + 1 ).to.be.bignumber.equal(await instance.balanceOf.call(anotherAccount));
     })
 })
