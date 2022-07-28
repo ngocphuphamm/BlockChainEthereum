@@ -1,0 +1,19 @@
+[accountA,accountB,accountC] = await ethers.getSigners();let Contract = await ethers.getContractFactory("PNP");
+ contract = await Contract.deploy();
+await contract.deployed();
+===============================
+so sánh = 
+ expect(await contract.totalSupply()).to.be.equal(totalSupply);
+===============================
+connect ví (.connect(accountB))
+await expect(contract.connect(accountB).pause()).to.be.reverted;
+========================================
+hiển thị revert (.to.be.reverted)
+ await expect(contract.connect(accountB).pause()).to.be.reverted;
+========================================
+hiển thị revert chữ so sanh 
+ await expect(contract.pause()).to.be.revertedWith("Pausable : paused");
+========================================
+tra ve trang true xuat emit bat su kien emit 
+await expect(pauseTx).to.be.emit(contract,"Paused").withArgs(accountA.address);
+

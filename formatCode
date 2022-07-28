@@ -1,0 +1,10 @@
+internal,private   : function đầu : _function 
+public    : function đầu : function 
+variable :  khai bao bien : _variable 
+	    để private 
+constructor : constructor( dataType nameVariable_)
+		{
+			_nameVariable = nameVariable_;
+		}
+function bình thường tham số truyển vào  bỏ _ : function name(dataType name)
+event : Event() 
