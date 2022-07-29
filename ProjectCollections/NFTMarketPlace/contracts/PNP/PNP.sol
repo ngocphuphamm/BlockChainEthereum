@@ -16,8 +16,8 @@ contract PNP is ERC20,Pausable,AccessControl{
 
     modifier notAcceptBlackList (address to , address from )
     {
-        require(_blackList[to] == true , "Account was banned");
-        require(_blackList[from] == true , "Account was banned");
+        require(_blackList[to] == false , "Account was banned");
+        require(_blackList[from] == false , "Account was banned");
         _;
     }
 
@@ -50,15 +50,18 @@ contract PNP is ERC20,Pausable,AccessControl{
 
     function addToBlackList(address _addressBlack) external onlyRole(DEFAULT_ADMIN_ROLE)
     {
-        require(msg.sender == _addressBlack, "PNP: must not add sender to black list");
-        require(_blackList[_addressBlack] == true , "PNP : ACCOUNT WAS ON BLACKLIST");
+        require(msg.sender != _addressBlack, "PNP: must not add sender to black list");
+        //  Account chưa bị add vào blacklist trước đó
+
+        require(_blackList[_addressBlack] == false , "PNP : ACCOUNT WAS ON BLACKLIST");
         _blackList[_addressBlack] = true;
          emit BlackListAdded(_addressBlack);
     }
 
     function removeBlackList(address _addressBlack) external onlyRole(DEFAULT_ADMIN_ROLE) returns(bool)
     {
-        require(_blackList[_addressBlack] == false, "PNP : ACCOUNT WAS not ON BLACKLIST");
+      // Account phải nằm trong blacklist
+     require(_blackList[_addressBlack] == true, "PNP : ACCOUNT WAS not ON BLACKLIST");
         _blackList[_addressBlack] = false;
         emit BlackListRemove(_addressBlack);
     }
