@@ -16,4 +16,7 @@ hiển thị revert chữ so sanh
 ========================================
 tra ve trang true xuat emit bat su kien emit 
 await expect(pauseTx).to.be.emit(contract,"Paused").withArgs(accountA.address);
+=================================
+tua thoi gian theo mong muon de test 
+ await network.provider.send("evm_increaseTime", [oneWeek * 24])
 

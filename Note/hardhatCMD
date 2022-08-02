@@ -5,3 +5,5 @@ npx hardhat node || chay node nhu truffle node ao
 npx run ./scripts/name.js --network localhost 
 deploy bsc
 npx run ./scripts/name.js --network tesnet
+npx hardhat --network testnet verify (addressContracT) || verify contract
+

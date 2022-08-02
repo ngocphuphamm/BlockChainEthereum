@@ -8,3 +8,17 @@ constructor : constructor( dataType nameVariable_)
 		}
 function bình thường tham số truyển vào  bỏ _ : function name(dataType name)
 event : Event() 
+
+// sử dụng struct 
+Khi tạo ra mọt instance của struct thì dùng storage 
+vd : 
+    struct Order{
+        address seller;
+        address buyer;
+        uint256 tokenId;
+        address paymentToken;     
+        uint256 price ; 
+    }
+     Order storage _order = _orders[orderId];
+ 
+    

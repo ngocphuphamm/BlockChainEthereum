@@ -1,0 +1,30 @@
+step 1 : node 
+step 2 : 
+> var url = "https://data-seed-prebsc-1-s1.binance.org:8545"
+> var Web3 = require("web3")
+ket noi ung doi  voi web3js 
+> var web3 = new Web3(url)
+> var address = "0x03b29886a52075CaDB8B557b1e02409658341961"
+> var balance = await web3.eth.getBalance(address)
+balance => so wei 
+> var balanaceEth = await web3.utils.fromWei(balance,"ether")
+=>balanceEth  => so ether
+
+================================ cach tao ra 1 account 
+web3.eth.accounts.create()
+> var web3Local = new Web3("http://127.0.0.1:8545/")
+
+tuong tac voi local node 
+
+
+=============================== get private key 
+const accountPrivateKey = await web3.eth.privateKeyToAccount('');
+
+=============================== quy trinh thao tac 
+ const web3  = new Web3 ("http://127.0.0.1:8545/");
+    // lay address contract va abi contract 
+    const pnpToken = await new web3.eth.Contract(PNPToken.abi,"0x5FbDB2315678afecb367f032d93F642f64180aa3");
+ 
+     let test = await pnpToken.methods.transfer('0x70997970C51812dc3A010C7d01b50e0d17dc79C8',await web3.utils.toWei('1000','ether')).send({ from: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'});
+    let name = await  pnpToken.eth.getBalance('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266');
+
