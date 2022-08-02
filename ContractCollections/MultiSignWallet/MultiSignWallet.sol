@@ -55,6 +55,7 @@ contract MultiSigWallet is SignWallet{
             require(owner != address(0),"NOt address 0x0000000...." );
             require(!isOwner[owner],"owner not unique" );
              owners[i] =  owner;
+             isOwner[owner] = true;
         }        
 
     }
@@ -73,12 +74,12 @@ contract MultiSigWallet is SignWallet{
         emit ConfirmTransaction(msg.sender,transactionId);
     }
     function executeTransaction(uint transactionId) 
-      public  onlyOwner  transactionExists(transactionId) notExecuted(transactionId) notConfirmed(transactionId) override
+      public  onlyOwner  transactionExists(transactionId) notExecuted(transactionId) override
     {
         require(transactions[transactionId].numConfirmations > _numConfirmationRequired,"cannot execute tx");
         transactions[transactionId].status = true;
         (bool success,) = transactions[transactionId].to.call{value : transactions[transactionId].value  , gas : 5000}
-                                                 k             (   abi.encodeWithSignature("foo(string,uint256)", "call foo", 123));
+                                                              (   abi.encodeWithSignature("foo(string,uint256)", "call foo", 123));
 
         require(success,"transaction failed");
         emit ExcuteTransaction(msg.sender,transactionId);
@@ -105,6 +106,7 @@ contract MultiSigWallet is SignWallet{
             trans.value =_value;
             trans.data = _data;
             _transactionCount += 1 ;
+
           emit SubmitTransaction(
               msg.sender ,
               transactionId , 
@@ -118,4 +120,10 @@ contract MultiSigWallet is SignWallet{
             // React to receiving ether
         emit Deposit(msg.sender, msg.value, address(this).balance);
     }
+
+    function stakingPool() public view returns(uint256)
+    {
+        return address(this).balance;
+    }
+
 }
