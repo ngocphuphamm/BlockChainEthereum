@@ -1,0 +1,16 @@
+A : Số lượng token gửi 
+B : Số lượng token trong staking 
+24 => 24h 
+3600 => 60s * 60phu
+Công thức 
+ R*(A/B) * 24 *3600
+VD : 
+Alice gửi 100 token 
+Bob gửi 100 token 
+thì Staking pool là 200token 
+vào ngày thứ nhất alice muốn unstack 
+R*(100/200)*24*3600 => R*43200 
+
+vào ngày thứ 3 bob muốn unstack 
+R*(100/200)*24*3600 + R*(100/100)*24*3600 = > R*129600 
+
