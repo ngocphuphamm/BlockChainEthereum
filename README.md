@@ -1,3 +1,4 @@
+
 # Smart contract best practices
 
 **Notice: this translation was generously provided by a contributor. The maintainers are not able to verify the content. Any issues or PRs to help improve it are welcome.**
